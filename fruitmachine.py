@@ -25,40 +25,36 @@ def generate_rolls():
 spin_number = 0
 
 while player_balance > 0:
-    if (input("\nWould you like to spin the fruits? (Enter Y to continue and N to collect earnings): ").lower() == "y"):
-        spin_number += 1
+    spin_number += 1
 
-        current_balance = player_balance
+    current_balance = player_balance
 
-        obtained_values = generate_rolls()
+    obtained_values = generate_rolls()
 
-        print("Your values are: " + str(obtained_values))
+    print("Your values are: " + str(obtained_values))
 
-        if (obtained_values.count("Bell") == 3):
-            player_balance += 5
+    if (obtained_values.count("Bell") == 3):
+         player_balance += 5
 
-        elif (obtained_values.count("Skull") == 2):
-            player_balance -= 1
+    elif (obtained_values.count("Skull") == 2):
+         player_balance -= 1
 
-        elif (obtained_values.count("Skull") == 3):
-            player_balance -= player_balance
+    elif (obtained_values.count("Skull") == 3):
+         player_balance -= player_balance
 
-        elif (obtained_values[1:] == obtained_values[:-1]):
-            player_balance += 1
+    elif (obtained_values[1:] == obtained_values[:-1]):
+         player_balance += 1
         
-        else:
-            for item in obtained_values:
-                if(obtained_values.count(item) == 2):
-                    player_balance += 0.5
-                    break
-
-        player_balance = round(player_balance, 2)
-        change = round(player_balance - (+current_balance), 2)
-
-        player_balance = player_balance - 0.2
-
     else:
-        break
+         for item in obtained_values:
+            if(obtained_values.count(item) == 2):
+                player_balance += 0.5
+                   break
+
+    player_balance = round(player_balance, 2)
+    change = round(player_balance - (+current_balance), 2)
+
+    player_balance = player_balance - 0.2
 
     if (change > 0):    
         print("\nYou have won " + str(currency_format(change)))
@@ -70,6 +66,12 @@ while player_balance > 0:
         print("\nYou haven't lost or won any amount!")
     
     print("Your current balance is: " + str(currency_format(player_balance)))
+    
+    
+    if (input("\nWould you like to spin the fruits? (Enter Y to continue and N to collect earnings): ").lower() == "y"):
+        pass
+    else:
+        break
 
     if (player_balance <= 0):
         print("You have reached your demise. Game Over...")

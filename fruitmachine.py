@@ -45,11 +45,12 @@ while player_balance > 0:
 
         elif (obtained_values[1:] == obtained_values[:-1]):
             player_balance += 1
-
-        for item in obtained_values:
-            if(obtained_values.count(item) == 2):
-                player_balance += 0.5
-                break
+        
+        else:
+            for item in obtained_values:
+                if(obtained_values.count(item) == 2):
+                    player_balance += 0.5
+                    break
 
         player_balance = round(player_balance, 2)
         change = round(player_balance - (+current_balance), 2)
